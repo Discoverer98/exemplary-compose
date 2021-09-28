@@ -1,6 +1,9 @@
 package com.discoverer.exemplary.viewmodel
 
-class MainViewModel {
+import androidx.lifecycle.ViewModel
+
+
+class MainViewModel : ViewModel() {
 
     
 

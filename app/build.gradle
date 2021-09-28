@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+def koin_version = '2.2.3'
+
 android {
     compileSdk 31
 
@@ -38,9 +40,22 @@ dependencies {
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
 
+    // Koin for Kotlin apps
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-android-viewmodel:$koin_version"
+    // Testing
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation "com.squareup.okhttp3:okhttp:2.1.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:2.1.0"
+
+    // Coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.30"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.30"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
