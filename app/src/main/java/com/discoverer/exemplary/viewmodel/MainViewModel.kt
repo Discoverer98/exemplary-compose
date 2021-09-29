@@ -1,13 +1,11 @@
 package com.discoverer.exemplary.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.discoverer.exemplary.api.MainRepository
 import com.discoverer.exemplary.api.NetworkHelper
 import com.discoverer.exemplary.api.Resource
-import com.discoverer.exemplary.di.module.viewModelModule
 import com.discoverer.exemplary.model.Movie
 import kotlinx.coroutines.launch
 
@@ -15,12 +13,14 @@ import kotlinx.coroutines.launch
 class MainViewModel(private val mainRepository: MainRepository,
                     private val networkHelper: NetworkHelper) : ViewModel() {
 
+    private val apiKey = "d513a206"
+
     val movieInfo = MutableLiveData<Resource<Movie>>()
 
     fun fetchMovie(title: String) {
         viewModelScope.launch {
             if (networkHelper.isNetworkConnected()) {
-                mainRepository.getMovieInfo("", title).let {
+                mainRepository.getMovieInfo(apiKey, title).let {
                     if (it.isSuccessful) {
                         movieInfo.postValue(Resource.success(it.body()))
                     } else {
