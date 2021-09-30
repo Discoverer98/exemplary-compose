@@ -3,9 +3,11 @@ package com.discoverer.exemplary.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.discoverer.exemplary.R
 import com.discoverer.exemplary.api.Status
+import com.discoverer.exemplary.databinding.ActivityMainBinding
 import com.discoverer.exemplary.viewmodel.MainViewModel
 import org.koin.android.viewmodel.compat.ScopeCompat.viewModel
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -18,6 +20,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.lifecycleOwner = this;
+        binding.viewModel = mainViewModel
 
         mainViewModel.movieInfo.observe(this, Observer {
             when (it.status) {

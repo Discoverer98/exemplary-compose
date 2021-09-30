@@ -17,7 +17,11 @@ class MainViewModel(private val mainRepository: MainRepository,
 
     val movieInfo = MutableLiveData<Resource<Movie>>()
 
-    fun fetchMovie(title: String) {
+    fun fetchMovie(title: String?) {
+        if (title == null || title.isEmpty()) {
+            return
+        }
+
         viewModelScope.launch {
             if (networkHelper.isNetworkConnected()) {
                 mainRepository.getMovieInfo(apiKey, title).let {
