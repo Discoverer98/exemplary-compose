@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this;
         binding.viewModel = mainViewModel
 
-        mainViewModel.movieInfo.observe(this, Observer {
+        mainViewModel.movieInfo.observe(this, {
             when (it.status) {
                 Status.SUCCESS -> {
                     Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()

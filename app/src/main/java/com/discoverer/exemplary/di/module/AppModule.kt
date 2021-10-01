@@ -6,6 +6,9 @@ import com.discoverer.exemplary.api.ApiHelper
 import com.discoverer.exemplary.api.ApiHelperImpl
 import com.discoverer.exemplary.api.ApiService
 import com.discoverer.exemplary.api.NetworkHelper
+import com.discoverer.exemplary.model.Constants
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -16,7 +19,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 val appModule = module {
     single { provideOkHttpClient() }
-    single { provideRetrofit(get(), "https://www.omdbapi.com/") }
+    single { provideRetrofit(get()) }
     single { provideApiService(get()) }
     single { provideNetworkHelper(androidContext()) }
 
@@ -37,14 +40,17 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
     .Builder()
     .build()
 
-private fun provideRetrofit(
-    okHttpClient: OkHttpClient,
-    BASE_URL: String): Retrofit =
-    Retrofit.Builder()
-        .addConverterFactory(MoshiConverterFactory.create())
-        .baseUrl(BASE_URL)
+private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
+    return Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl(Constants.baseUrl)
         .client(okHttpClient)
         .build()
+}
 
 private fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 

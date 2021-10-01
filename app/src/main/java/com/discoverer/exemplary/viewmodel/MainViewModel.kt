@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.discoverer.exemplary.api.MainRepository
 import com.discoverer.exemplary.api.NetworkHelper
 import com.discoverer.exemplary.api.Resource
-import com.discoverer.exemplary.model.Movie
+import com.discoverer.exemplary.model.SearchResult
 import kotlinx.coroutines.launch
 
 
@@ -15,7 +15,7 @@ class MainViewModel(private val mainRepository: MainRepository,
 
     private val apiKey = "d513a206"
 
-    val movieInfo = MutableLiveData<Resource<Movie>>()
+    val movieInfo = MutableLiveData<Resource<SearchResult>>()
 
     fun fetchMovie(title: String?) {
         if (title == null || title.isEmpty()) {
