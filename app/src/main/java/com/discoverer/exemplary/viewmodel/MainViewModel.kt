@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.discoverer.exemplary.api.MainRepository
 import com.discoverer.exemplary.api.NetworkHelper
 import com.discoverer.exemplary.api.Resource
+import com.discoverer.exemplary.model.FoundItem
 import com.discoverer.exemplary.model.SearchResult
 import kotlinx.coroutines.launch
 
@@ -35,6 +36,10 @@ class MainViewModel(private val mainRepository: MainRepository,
                 movieInfo.postValue(Resource.error("No Internet connection.", null))
             }
         }
+    }
+
+    fun onFoundItemClick(foundItem: FoundItem) {
+
     }
 
 } // MainViewModel class
