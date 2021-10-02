@@ -7,8 +7,8 @@ import retrofit2.Response
 
 interface ApiHelper {
 
-    suspend fun searchMovies(apiKey: String, title: String): Response<SearchResult>
+    suspend fun searchMovies(title: String): Response<SearchResult>
 
-    suspend fun getMovieInfo(apiKey: String, imdbId: String): Response<MovieInfo>
+    suspend fun getMovieInfo(imdbId: String): Response<MovieInfo>
 
 } // ApiHelper interface

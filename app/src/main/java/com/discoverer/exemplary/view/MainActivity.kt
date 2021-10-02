@@ -1,7 +1,10 @@
 package com.discoverer.exemplary.view
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         binding.movieList.isNestedScrollingEnabled = false
 
         mainViewModel.searchResults.observe(this, {
+            hideKeyboard()
             when (it.status) {
                 Status.SUCCESS -> {
                     // Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
@@ -47,6 +51,11 @@ class MainActivity : AppCompatActivity() {
         })
 
         mainViewModel.startMovieEvent.observe(this, { it.startActivity(this) })
+    }
+
+    private fun hideKeyboard() {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow((currentFocus ?: View(this)).windowToken, 0)
     }
 
 } // MainActivity class

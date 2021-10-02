@@ -16,8 +16,6 @@ import kotlinx.coroutines.launch
 class MainViewModel(private val mainRepository: MainRepository,
                     private val networkHelper: NetworkHelper) : ViewModel() {
 
-    private val apiKey = "d513a206"
-
     val searchResults = MutableLiveData<Resource<SearchResult>>()
     val startMovieEvent = MutableLiveData<MovieActivity.Arguments>()
     val movieInfo = MutableLiveData<Resource<MovieInfo>>()
@@ -33,7 +31,7 @@ class MainViewModel(private val mainRepository: MainRepository,
                 return@launch
             }
 
-            mainRepository.searchMovies(apiKey, title).let {
+            mainRepository.searchMovies(title).let {
                 if (it.isSuccessful) {
                     searchResults.postValue(Resource.success(it.body()))
                 } else {
@@ -54,7 +52,7 @@ class MainViewModel(private val mainRepository: MainRepository,
                 return@launch
             }
 
-            mainRepository.getMovieInfo(apiKey, foundItem.imdbId).let {
+            mainRepository.getMovieInfo(foundItem.imdbId).let {
                 if (it.isSuccessful) {
                     movieInfo.postValue(Resource.success(it.body()))
                 } else {
