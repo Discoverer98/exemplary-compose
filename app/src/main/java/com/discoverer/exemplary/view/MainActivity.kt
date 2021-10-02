@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.discoverer.exemplary.R
 import com.discoverer.exemplary.api.Status
 import com.discoverer.exemplary.databinding.ActivityMainBinding
 import com.discoverer.exemplary.viewmodel.MainViewModel
 import com.discoverer.exemplary.viewmodel.MoviesAdapter
-import org.koin.android.viewmodel.compat.ScopeCompat.viewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -33,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding.movieList.adapter = moviesAdapter
         binding.movieList.isNestedScrollingEnabled = false
 
-        mainViewModel.movieInfo.observe(this, {
+        mainViewModel.searchResults.observe(this, {
             when (it.status) {
                 Status.SUCCESS -> {
                     // Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
@@ -47,6 +45,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        mainViewModel.startMovieEvent.observe(this, { it.startActivity(this) })
     }
 
 } // MainActivity class

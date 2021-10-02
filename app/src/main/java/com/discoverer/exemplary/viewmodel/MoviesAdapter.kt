@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.discoverer.exemplary.R
 import com.discoverer.exemplary.databinding.MovieRowBinding
 import com.discoverer.exemplary.model.FoundItem
+import com.squareup.picasso.Picasso
 
 
 class MoviesAdapter(val context: Context?, val viewModel: MainViewModel) : RecyclerView.Adapter<MoviesAdapter.FoundMovieViewHolder>() {
@@ -34,6 +35,7 @@ class MoviesAdapter(val context: Context?, val viewModel: MainViewModel) : Recyc
         fun onBind(foundItem: FoundItem, viewModel: MainViewModel) {
             viewBinding.foundItem = foundItem
             viewBinding.viewModel = viewModel
+            Picasso.get().load(foundItem.posterUrl).into(viewBinding.movieThumbnail)
         }
 
     } // FoundMovieViewHolder class

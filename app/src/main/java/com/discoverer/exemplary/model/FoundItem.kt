@@ -1,9 +1,11 @@
 package com.discoverer.exemplary.model
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class FoundItem(
     @Json(name = "Title")
@@ -19,4 +21,4 @@ data class FoundItem(
     val type: String,
 
     @Json(name = "Poster")
-    val posterUrl: String)
+    val posterUrl: String) : Parcelable

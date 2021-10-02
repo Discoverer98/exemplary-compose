@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 def koin_version = '2.2.3'
@@ -50,8 +51,12 @@ dependencies {
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-android-viewmodel:$koin_version"
+
     // Testing
     testImplementation "io.insert-koin:koin-test:$koin_version"
+
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
