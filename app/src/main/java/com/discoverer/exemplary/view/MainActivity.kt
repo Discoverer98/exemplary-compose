@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.discoverer.exemplary.R
-import com.discoverer.exemplary.api.Status
+import com.discoverer.exemplary.model.Status
 import com.discoverer.exemplary.databinding.ActivityMainBinding
 import com.discoverer.exemplary.viewmodel.MainViewModel
 import com.discoverer.exemplary.viewmodel.MoviesAdapter

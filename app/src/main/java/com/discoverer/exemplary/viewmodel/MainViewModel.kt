@@ -3,9 +3,9 @@ package com.discoverer.exemplary.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.discoverer.exemplary.api.MainRepository
+import com.discoverer.exemplary.model.MainRepository
 import com.discoverer.exemplary.api.NetworkHelper
-import com.discoverer.exemplary.api.Resource
+import com.discoverer.exemplary.model.Resource
 import com.discoverer.exemplary.model.FoundItem
 import com.discoverer.exemplary.model.MovieInfo
 import com.discoverer.exemplary.model.SearchResult

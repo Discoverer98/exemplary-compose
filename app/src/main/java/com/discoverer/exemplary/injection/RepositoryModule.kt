@@ -1,6 +1,6 @@
 package com.discoverer.exemplary.di.module
 
-import com.discoverer.exemplary.api.MainRepository
+import com.discoverer.exemplary.model.MainRepository
 import org.koin.dsl.module
 
 

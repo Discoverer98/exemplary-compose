@@ -1,4 +1,4 @@
-package com.discoverer.exemplary.api
+package com.discoverer.exemplary.model
 
 
 data class Resource<out T>(

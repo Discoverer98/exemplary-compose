@@ -1,4 +1,6 @@
-package com.discoverer.exemplary.api
+package com.discoverer.exemplary.model
+
+import com.discoverer.exemplary.api.ApiHelper
 
 
 class MainRepository(private val apiHelper: ApiHelper) {
