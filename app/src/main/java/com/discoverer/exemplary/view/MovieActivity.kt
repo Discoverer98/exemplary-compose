@@ -28,7 +28,6 @@ class MovieActivity : AppCompatActivity() {
         binding.viewModel = mainViewModel
 
         mainViewModel.movieInfo.observe(this, {
-            Toast.makeText(this, "Success!", Toast.LENGTH_LONG).show()
             Picasso.get().load(arguments.foundItem.posterUrl).into(binding.moviePoster)
         })
 
