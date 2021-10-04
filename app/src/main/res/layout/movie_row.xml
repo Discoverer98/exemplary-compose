@@ -3,15 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="foundItem"
             type="com.discoverer.exemplary.model.FoundItem" />
-
         <variable
             name="viewModel"
             type="com.discoverer.exemplary.viewmodel.MainViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

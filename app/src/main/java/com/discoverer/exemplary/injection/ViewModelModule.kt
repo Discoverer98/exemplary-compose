@@ -1,4 +1,4 @@
-package com.discoverer.exemplary.di.module
+package com.discoverer.exemplary.injection
 
 import com.discoverer.exemplary.viewmodel.MainViewModel
 import org.koin.android.viewmodel.compat.ScopeCompat.viewModel

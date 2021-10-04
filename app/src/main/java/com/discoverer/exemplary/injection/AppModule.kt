@@ -1,4 +1,4 @@
-package com.discoverer.exemplary.di.module
+package com.discoverer.exemplary.injection
 
 import android.content.Context
 import com.discoverer.exemplary.BuildConfig
@@ -54,4 +54,3 @@ private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
 
 private fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
-private fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper

@@ -1,4 +1,4 @@
-package com.discoverer.exemplary.di.module
+package com.discoverer.exemplary.injection
 
 import com.discoverer.exemplary.model.MainRepository
 import org.koin.dsl.module

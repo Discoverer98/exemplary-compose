@@ -1,9 +1,9 @@
 package com.discoverer.exemplary
 
 import android.app.Application
-import com.discoverer.exemplary.di.module.appModule
-import com.discoverer.exemplary.di.module.repoModule
-import com.discoverer.exemplary.di.module.viewModelModule
+import com.discoverer.exemplary.injection.appModule
+import com.discoverer.exemplary.injection.repoModule
+import com.discoverer.exemplary.injection.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

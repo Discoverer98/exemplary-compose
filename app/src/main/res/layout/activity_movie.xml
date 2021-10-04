@@ -5,11 +5,9 @@
     tools:context=".view.MovieActivity">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.discoverer.exemplary.viewmodel.MainViewModel" />
-
     </data>
 
     <ScrollView

@@ -34,6 +34,7 @@ class MovieActivity : AppCompatActivity() {
         mainViewModel.fetchMovieInfo(arguments.foundItem)
     }
 
+
     class Arguments(val foundItem: FoundItem) {
 
         companion object {

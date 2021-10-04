@@ -5,7 +5,6 @@
     tools:context=".view.MainActivity">
 
     <data>
-        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.discoverer.exemplary.viewmodel.MainViewModel" />
@@ -61,6 +60,8 @@
             android:layout_marginTop="@dimen/wide_separator"
             android:layout_marginEnd="@dimen/regular_separator"
             android:layout_marginBottom="@dimen/wide_separator"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
