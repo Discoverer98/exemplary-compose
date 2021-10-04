@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View" />
 
         <variable
             name="foundItem"
@@ -29,8 +28,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="@dimen/narrow_separator"
             android:layout_marginTop="@dimen/narrow_separator"
-            android:layout_marginBottom="@dimen/narrow_separator"
-            android:background="@color/design_default_color_error"/>
+            android:layout_marginBottom="@dimen/narrow_separator" />
 
         <TextView
             android:id="@+id/movie_title"
