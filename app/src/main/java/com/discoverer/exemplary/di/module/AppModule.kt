@@ -47,7 +47,7 @@ private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
 
     return Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .baseUrl(Constants.baseUrl)
+        .baseUrl(Constants.BASE_URL)
         .client(okHttpClient)
         .build()
 }

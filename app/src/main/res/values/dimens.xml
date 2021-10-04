@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="narrow_separator">8dp</dimen>
+    <dimen name="regular_separator">16dp</dimen>
+    <dimen name="wide_separator">32dp</dimen>
+
+</resources>

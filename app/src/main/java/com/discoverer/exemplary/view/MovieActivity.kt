@@ -25,6 +25,7 @@ class MovieActivity : AppCompatActivity() {
 
         val binding: ActivityMovieBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie)
         binding.lifecycleOwner = this
+        binding.viewModel = mainViewModel
 
         mainViewModel.movieInfo.observe(this, {
             Toast.makeText(this, "Success!", Toast.LENGTH_LONG).show()

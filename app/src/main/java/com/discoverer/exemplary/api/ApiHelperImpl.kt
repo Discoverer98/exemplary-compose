@@ -8,8 +8,8 @@ import retrofit2.Response
 
 class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
 
-    override suspend fun searchMovies(title: String): Response<SearchResult> = apiService.searchMovies(Constants.apiKey, title)
+    override suspend fun searchMovies(title: String): Response<SearchResult> = apiService.searchMovies(Constants.API_KEY, title)
 
-    override suspend fun getMovieInfo(imdbId: String): Response<MovieInfo> = apiService.getMovieInfo(Constants.apiKey, imdbId)
+    override suspend fun getMovieInfo(imdbId: String): Response<MovieInfo> = apiService.getMovieInfo(Constants.API_KEY, imdbId)
 
 } // ApiHelperImpl class

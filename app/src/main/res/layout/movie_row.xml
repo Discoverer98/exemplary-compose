@@ -27,9 +27,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/narrow_separator"
+            android:layout_marginTop="@dimen/narrow_separator"
+            android:layout_marginBottom="@dimen/narrow_separator"
             android:background="@color/design_default_color_error"/>
 
         <TextView
@@ -39,9 +39,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/movie_thumbnail"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="@dimen/narrow_separator"
+            android:layout_marginTop="@dimen/narrow_separator"
+            android:layout_marginEnd="@dimen/narrow_separator"
             android:text="@{foundItem.title}"
             android:textStyle="bold"/>
 
@@ -52,9 +52,9 @@
             app:layout_constraintTop_toBottomOf="@id/movie_title"
             app:layout_constraintStart_toEndOf="@id/movie_thumbnail"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="@dimen/narrow_separator"
+            android:layout_marginStart="@dimen/narrow_separator"
+            android:layout_marginEnd="@dimen/narrow_separator"
             android:text="@{foundItem.year}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Exemplary</string>
+
+    <!-- -->
+    <string name="main_screen_prompt">Enter a movie title to search:</string>
+    <string name="main_screen_action_button">Look up</string>
+
+    <!-- Movie Info screen -->
+    <string name="movie_info_year">Year:</string>
 </resources>
