@@ -50,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/movie_title_search"
             android:clickable="true"
-            android:onClick="@{(view) -> viewModel.fetchMovie(movieTitleSearch.getText().toString())}"/>
+            android:onClick="@{(view) -> viewModel.fetchMovies(movieTitleSearch.getText().toString())}"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movie_list"

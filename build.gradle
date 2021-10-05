@@ -14,6 +14,7 @@ buildscript {
 }
 
 ext {
+    // Versions of various external libraries, to guarantee the same versions accross modules.
     retrofit_version = '2.9.0'
     moshi_version = '1.12.0'
     okhttp3_version = '4.9.1'

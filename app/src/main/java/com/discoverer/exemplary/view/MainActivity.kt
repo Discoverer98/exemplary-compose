@@ -15,12 +15,22 @@ import com.discoverer.exemplary.viewmodel.MainViewModel
 import com.discoverer.exemplary.viewmodel.MoviesAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
-
+/**
+ * The main activity: the activity that it is opened when the app starts and that will allow
+ * the user to search for movies with a given title.
+ */
 class MainActivity : AppCompatActivity() {
 
+    /**
+     * A reference to the viewmodel for this application, containing the logic
+     * for displaying the data to the user.
+     */
     private val mainViewModel : MainViewModel by viewModel()
-    private lateinit var moviesAdapter: MoviesAdapter
 
+    /**
+     * A standard Activity.onCreate() method, which sets up common things for this
+     * activity, such as the viewmodel, an adapter for the RecycleView and the observers.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,20 +39,30 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this;
         binding.viewModel = mainViewModel
 
-        moviesAdapter = MoviesAdapter(this, mainViewModel)
+        val moviesAdapter = MoviesAdapter(this, mainViewModel)
         binding.movieList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.movieList.adapter = moviesAdapter
         binding.movieList.isNestedScrollingEnabled = false
 
+        setObservers(moviesAdapter)
+    }
+
+    /**
+     * Utility function to set up the observers to LiveData from the viewmodel
+     * (and the associated code for each observed LiveData).
+     *
+     * @param moviesAdapter An adapter that will receive the data obtained from the repository about movies.
+     */
+    private fun setObservers(moviesAdapter: MoviesAdapter) {
         mainViewModel.searchResults.observe(this, {
             hideKeyboard()
             when (it.status) {
                 Status.SUCCESS -> {
-                    // Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
                     moviesAdapter.foundMovies = it.data?.foundItems ?: ArrayList()
                 }
                 Status.LOADING -> {
-                    Toast.makeText(this, "Loading...", Toast.LENGTH_LONG).show()
+                    // At the moment we are not displaying a progress bar, but here is the hook
+                    // to add this later.
                 }
                 Status.ERROR -> {
                     Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
@@ -50,9 +70,12 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        mainViewModel.startMovieEvent.observe(this, { it.startActivity(this) })
+        mainViewModel.openMovieEvent.observe(this, { it.startActivity(this) })
     }
 
+    /**
+     * Utility function to hide the soft keyboard.
+     */
     private fun hideKeyboard() {
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow((currentFocus ?: View(this)).windowToken, 0)

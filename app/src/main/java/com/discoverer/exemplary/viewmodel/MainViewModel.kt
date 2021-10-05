@@ -13,14 +13,42 @@ import com.discoverer.exemplary.view.MovieActivity
 import kotlinx.coroutines.launch
 
 
+/**
+ * The viewmodel for this app. Because this app is rather small, all the functionality fits in one class
+ * (normally it would be a good idea to split the functionality so that you don't end with a humongous
+ * class). It contains the methods to query the data repository in order to get data about movies,
+ * and then processes that data in order to make it ready to be displayed in the view.
+ *
+ * @param mainRepository The MainRepository, which is used to query for data about movies.
+ * @param networkHelper An utility object that allows the code to find out if the user is online or not.
+ */
 class MainViewModel(private val mainRepository: MainRepository,
                     private val networkHelper: NetworkHelper) : ViewModel() {
 
+    /**
+     * LiveData object that will contain the data about a just concluded search on the API for a given movie.
+     */
     val searchResults = MutableLiveData<Resource<SearchResult>>()
-    val startMovieEvent = MutableLiveData<MovieActivity.Arguments>()
+
+    /**
+     * LiveData object that will signal that the user wants to see more information
+     * about a movie and the {@link com.discoverer.exemplary.view.MovieActivity} should be opened.
+     */
+    val openMovieEvent = MutableLiveData<MovieActivity.Arguments>()
+
+    /**
+     * LiveData object that will signal that information about a movie has been fetched and that the
+     * data about it is available.
+     */
     val movieInfo = MutableLiveData<Resource<MovieInfo>>()
 
-    fun fetchMovie(title: String?) {
+    /**
+     * Method that uses the MainRepository to query a network API in order to get a list of movies
+     * whose title includes the string given in the parameter.
+     *
+     * @param title The title (or part of a title) of a movie that the user is looking for.
+     */
+    fun fetchMovies(title: String?) {
         if (title == null || title.isEmpty()) {
             return
         }
@@ -42,7 +70,7 @@ class MainViewModel(private val mainRepository: MainRepository,
     }
 
     fun onFoundItemClick(foundItem: FoundItem) {
-        startMovieEvent.postValue(MovieActivity.Arguments(foundItem))
+        openMovieEvent.postValue(MovieActivity.Arguments(foundItem))
     }
 
     fun fetchMovieInfo(foundItem: FoundItem) {

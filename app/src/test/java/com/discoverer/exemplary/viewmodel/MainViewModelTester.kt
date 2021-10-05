@@ -7,7 +7,6 @@ import com.discoverer.exemplary.model.*
 import com.discoverer.exemplary.util.MainCoroutineRule
 import com.discoverer.exemplary.view.MovieActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.newSingleThreadContext
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -54,13 +53,13 @@ class MainViewModelTester {
     fun setup() {
         mainViewModel = MainViewModel(mockMainRepository, mockNetworkHelper)
         mainViewModel.searchResults.observeForever(mockSearchResultsObserver)
-        mainViewModel.startMovieEvent.observeForever(mockOpenMovieEventObserver)
+        mainViewModel.openMovieEvent.observeForever(mockOpenMovieEventObserver)
         mainViewModel.movieInfo.observeForever(mockMovieInfoObserver)
     }
 
     @Test
     fun `verify empty title search`() {
-        mainViewModel.fetchMovie("")
+        mainViewModel.fetchMovies("")
         verify(mockSearchResultsObserver, never()).onChanged(any())
     }
 
@@ -68,7 +67,7 @@ class MainViewModelTester {
     fun `verify title search with no network connection`() {
         `when`(mockNetworkHelper.isNetworkConnected()).thenReturn(false)
 
-        mainViewModel.fetchMovie(MOVIE_TITLE)
+        mainViewModel.fetchMovies(MOVIE_TITLE)
         verify(mockSearchResultsObserver).onChanged(argThat { it.status == Status.ERROR })
     }
 
