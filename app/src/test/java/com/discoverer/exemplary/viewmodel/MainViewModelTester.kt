@@ -24,6 +24,9 @@ const val MOCK_ERROR_RESPONSE = "test error response"
 const val MOCK_IMDB_ID = "tt05965"
 
 
+/**
+ * Class that performs unit tests for all the methods (and possible code paths) of MainViewModel.
+ */
 @RunWith(MockitoJUnitRunner::class)
 class MainViewModelTester {
 
