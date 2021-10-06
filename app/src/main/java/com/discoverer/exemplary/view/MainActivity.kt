@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this;
         binding.viewModel = mainViewModel
 
-        val moviesAdapter = MoviesAdapter(this, mainViewModel)
+        val moviesAdapter = MoviesAdapter(mainViewModel)
         binding.movieList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.movieList.adapter = moviesAdapter
         binding.movieList.isNestedScrollingEnabled = false

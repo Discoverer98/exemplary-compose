@@ -69,10 +69,20 @@ class MainViewModel(private val mainRepository: MainRepository,
         }
     }
 
+    /**
+     * Method called via data binding from the activity_main layout when the user clicks to search for a movie title.
+     *
+     * @param foundItem A {@link com.discoverer.exemplary.model.FoundItem} object that contains data about the movie tapped by the user.
+     */
     fun onFoundItemClick(foundItem: FoundItem) {
         openMovieEvent.postValue(MovieActivity.Arguments(foundItem))
     }
 
+    /**
+     * Method that will call the MainRepository in order to query more data about a specific movie.
+     *
+     * @param foundItem A {@link com.discoverer.exemplary.model.FoundItem} object that you want more information about.
+     */
     fun fetchMovieInfo(foundItem: FoundItem) {
         viewModelScope.launch {
             if (!networkHelper.isNetworkConnected()) {
