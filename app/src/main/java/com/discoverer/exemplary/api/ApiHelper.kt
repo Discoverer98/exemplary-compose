@@ -6,8 +6,7 @@ import retrofit2.Response
 
 
 /**
- * Definition of an interface to be used by Retrofit in order to create the code to access
- * the web API we need for our application.
+ * Definition of an interface to be used by the Repository when querying data about movies.
  */
 interface ApiHelper {
 
