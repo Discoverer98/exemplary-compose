@@ -10,6 +10,9 @@ const val MOCK_VALUE = "Mock value"
 const val MOCK_ERROR_MESSAGE = "Mock error message"
 
 
+/**
+ * Tester class to test if the Resource class is properly passing its values around.
+ */
 @RunWith(MockitoJUnitRunner::class)
 class ResourceTester {
 
@@ -40,6 +43,11 @@ class ResourceTester {
     }
 
 
+    /**
+     * Mock class just used to test if a Resource object is properly passing around a reference to an object of this class.
+     *
+     * @param mockValue Just a mock value, you don't need to fill this up.
+     */
     class MockData(val mockValue: String)
 
 } // ResourceTester class
