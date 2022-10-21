@@ -37,9 +37,9 @@ class MovieActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = mainViewModel
 
-        mainViewModel.movieInfo.observe(this, {
+        mainViewModel.movieInfo.observe(this) {
             Picasso.get().load(arguments.foundItem.posterUrl).into(binding.moviePoster)
-        })
+        }
 
         mainViewModel.fetchMovieInfo(arguments.foundItem)
     }

@@ -5,8 +5,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.2"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
+        classpath 'com.android.tools.build:gradle:7.3.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -14,14 +14,14 @@ buildscript {
 }
 
 ext {
-    // Versions of various external libraries, to guarantee the same versions accross modules.
+    // Versions of various external libraries, to guarantee the same versions across modules.
     retrofit_version = '2.9.0'
-    moshi_version = '1.12.0'
-    okhttp3_version = '4.9.1'
+    moshi_version = '1.14.0'
+    okhttp3_version = '4.10.0'
     koin_version = '2.2.3'
     picasso_version = '2.71828'
-    kotlin_coroutines_version = '1.5.2'
-    mockito_version = '3.12.4'
+    kotlin_coroutines_version = '1.6.4'
+    mockito_version = '4.8.1'
 }
 
 task clean(type: Delete) {
