@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
      * @param moviesAdapter An adapter that will receive the data obtained from the repository about movies.
      */
     private fun setObservers(moviesAdapter: MoviesAdapter) {
-        mainViewModel.searchResults.observe(this, {
+        mainViewModel.searchResults.observe(this) {
             hideKeyboard()
             when (it.status) {
                 Status.SUCCESS -> {
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                 }
             }
-        })
+        }
 
         mainViewModel.openMovieEvent.observe(this, { it.startActivity(this) })
     }
