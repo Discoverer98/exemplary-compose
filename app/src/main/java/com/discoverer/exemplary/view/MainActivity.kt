@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        mainViewModel.openMovieEvent.observe(this, { it.startActivity(this) })
+        mainViewModel.openMovieEvent.observe(this) { it.startActivity(this) }
     }
 
     /**
